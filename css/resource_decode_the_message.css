@@ -1,0 +1,30 @@
+body{
+	cursor: default;
+}
+.concealed{
+	background-color: grey;
+	color: grey;
+}
+.boxed{
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	text-align: center;
+	border: solid black 1px;
+	cursor: pointer;
+}
+.label{
+	width: 100px;
+}
+.invisible{
+	background-color: white;
+	color: white;
+}
+#spacerCell{
+	width: 50px;
+	cursor: default;
+}
+#MakeResource{
+	cursor: pointer;
+}
+

@@ -1,0 +1,12 @@
+.checkbox-grid
+{
+	font-size: large;
+	text-align: left;
+	width:100%;
+}
+.checkbox-grid li 
+{
+   list-style-type: none;
+   display:inline-block;
+   width:50%;
+}

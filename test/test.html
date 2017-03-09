@@ -1,0 +1,51 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="http://localhost/learning/mathsfarm/version2/css/normalise.css">
+	<link rel="stylesheet" href="http://localhost/learning/mathsfarm/version2/css/page1.css">
+	<link rel="stylesheet" href="http://localhost/learning/mathsfarm/version2/css/resource1.css">
+	<link rel="stylesheet" href="http://localhost/learning/mathsfarm/version2/css/resource_questions_and_answers.css">
+	<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.1.min.js"></script>
+	<script type="text/javascript" src="http://localhost/learning/mathsfarm/version2/javascript/ChooseQuestions1.js"></script>
+	<script type="text/javascript" src="http://localhost/learning/mathsfarm/version2/javascript/common_functions1.js"></script>
+	<title>Bingo</title>
+	<style>
+		button{
+			width: 200px;
+		}
+		#answerBox, #questionBox{
+			color: #2B665E;
+			border: #000000;
+		}
+		.invisibleText{
+			opacity: 0.0;
+		}
+	</style>
+</head>
+<body>
+<img id="banner" src="http://localhost/learning/mathsfarm/version2/images/banner.jpg" alt="Mathematics on a whiteboard">
+<div id="toplinkbar"><a class="toplink" href="http://localhost/learning/mathsfarm/version2/resource_decode_the_message.php">Decode the Message</a><a class="toplink" href="http://localhost/learning/mathsfarm/version2/resource_catchphrase.php">Catch Phrase</a><a class="toplink" href="http://localhost/learning/mathsfarm/version2/resource_questions_and_answers.php">Questions and Answers</a><a class="toplink currentpage" href="http://localhost/learning/mathsfarm/version2/resource_bingo.php">Bingo</a></div>
+<div id="core"><select id="topic_select" class="selector">
+	<option value="Make a selection">Make a selection</option>
+	<option value="Algebra">Algebra</option>
+	<option value="Number">Number</option>
+	<option value="Shape">Shape</option>
+	<option value="Data">Data</option>
+	<option value="Other topic">Other topic</option>
+	</select><select id="subtopic_select" class="selector"><option value="None">Choose a topic first</option></select><select id="level_select" class="selector"><option value="None">Choose An Option</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select><br><select id="title_select" class="selector"><option value="Other">Choose topic and subtopic</option></select>
+
+		<table>
+			<tbody>
+				<tr><td rowspan='2' id='questionBox'>Question Goes Here</td><td><button>Previous Question</button></td></tr>
+				<tr><td><button>Next Question</button></td></tr>
+				<tr><td rowspan='2' id='answerBox' class='invisibleText'>Answer Goes Her</td><td><button>Show Answer</button></td></tr>
+			</tbody>
+		</table>
+
+</div>
+<div id="bottomlinkbar"><a class="bottomlink" href="http://localhost/learning/mathsfarm/version2/general_home.php">Home</a><a class="bottomlink" href="http://localhost/learning/mathsfarm/version2/general_about.php">About Us</a><a class="bottomlink" href="http://localhost/learning/mathsfarm/version2/write_questions.php">Write Questions</a><a class="bottomlink" href="http://localhost/learning/mathsfarm/version2/choose_questions.php">Choose Questions</a><a class="bottomlink" href="http://localhost/learning/mathsfarm/version2/general_links.php">Other things you'll like</a><a class="bottomlink" href="http://localhost/learning/mathsfarm/version2//test/general_checkCookies.php">Cookies: TODO: delete</a></div>
+<div id="copyrightbottom">Copyright Melon Education 2017</div>
+
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+			#backgroundnum, #dimensions, span{
+				width: 500px;
+			}
+			#updateBackground, #updatedimensions, #updateExtension{
+				width: 200px;
+			}
+			table { 
+				background-size: cover;
+				width: 700px;
+				height: 400px;
+				padding: 20px;
+				margin: auto;
+				border: 1px solid black;
+				}
+			#table1{
+				background-image: url(../images/1CaughtRedHanded.png);
+			}
+			table.background1{	background-image: url(../images/1CaughtRedHanded.png);  }
+			table.background2{	background-image: url(../images/2keepitunderyourhat.jpg); }
+			table.background3{	background-image: url(../images/3catch22.gif);}
+						
+			 tr{
+				width: 25%;
+				height: 25%;
+			}
+			body{
+				text-align: center;
+				}

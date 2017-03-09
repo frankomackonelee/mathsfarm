@@ -1,0 +1,42 @@
+#banner{
+	height: 150px; 
+	width: 100%;
+}
+
+#toplinkbar{
+	background: #C0C0C0;
+	margin: auto;
+	text-align: center;
+	font-size: 20px;
+}
+.toplink{
+	display: inline-block;
+	width: 300px;
+}
+.toplink:hover{
+	font-weight: bold;
+	background: #CCCCCC
+}
+
+#core table{
+	margin: 0 auto;
+}
+
+#bottomlinkbar{
+	margin: auto;
+	text-align: center;
+}
+.bottomlink{
+	background: #C0C0C0;
+	display: inline-block;
+	width: 200px;
+}
+.bottomlink:hover{
+	font-weight: bold;
+	background: #C0C0C0;
+}
+
+#copyrightbottom{
+	display: block;
+	text-align: center;
+}

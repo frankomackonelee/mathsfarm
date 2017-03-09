@@ -1,0 +1,15 @@
+button{
+	width: 200px;
+}
+#answerBox, #questionBox, #questionNumber{
+	border: 2px solid black;
+}
+#answerBox, #questionBox{
+	width: 400px;
+}
+#questionNumber{
+	width: 100px;
+}
+.invisibleText{
+	opacity: 0.0;
+}

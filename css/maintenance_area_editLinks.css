@@ -1,0 +1,27 @@
+.centered {
+    margin: auto;
+    width: 450px;
+    padding: 10px;
+}
+.chooseFunctionality{
+	width: 150px;
+}
+.form-field{
+	clear: both;
+	padding: 10px;
+	width: 350px;
+	margin: auto;
+}
+.form-field label{
+	float: left;
+	width: 150px;
+	text-align: right;
+}
+.form-field input{
+	float: right;
+	width: 150px;
+	text-align: left;
+}
+#notDisplayed{
+	display: none;
+}

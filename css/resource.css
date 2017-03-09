@@ -1,0 +1,32 @@
+.currentpage{
+	background: #909090;
+	font-size: 24px;
+}
+#core{
+	text-align: center;
+}
+#topic_select{
+	width: 150px;
+}
+#subtopic_select{
+	width: 550px;
+}
+#level_select{
+	width: 50px;
+}
+#title_select, #updateresource{
+	width: 750px;
+}
+div#questions 
+{
+    text-align: center;
+}
+div#questions table 
+{
+    margin: 0 auto; 
+    text-align: left;
+    border-spacing: 5px;
+}
+.questionColumn{
+	text-align: left;
+}
