@@ -5,7 +5,7 @@
 	}
 	$fieldNames = array('url', 'icon', 'alt', 'accompanyingText');
 	foreach ($fieldNames as $name) {
-		$newData[$name] = "'".$_POST[$name]."'";
+		$newData[$name] = "'" . $_POST[$name] . "'";
 	}
 	$query= new Query_Insert();
 	$query->runQuery("pageinfo_links" ,$newData);

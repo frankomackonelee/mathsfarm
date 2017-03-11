@@ -54,11 +54,25 @@
 			$this->_keyList = "";
 			$this->_valueList = "";
 			$count = 0;
+			$arrLength = count($arr);
 			foreach ($arr as $key => $value) {
 				//TODO need to escape column and value carefully
 				$spacer = ($count===0 ? "" : $valueSpacer);
-				$this->_keyList .= $spacer.$key;
-				$this->_valueList .= $spacer.$value;
+				$this->_keyList .= $spacer . $key;
+				/*
+				$done = FALSE;
+				//TODO: this checks the type of the individula value, it doesn't look at the type of the column, which could cause problems...
+				//also checks that the string doesn't start and end with an inverted comma
+				if(gettype($value) == "string"){
+					//(strrpos($value, "'") == 0 && stripos($value, "'") == (strlen($value)-1))
+					if ($arrLength != 1){
+						$this->_valueList .= $spacer . '"' . $value . '"';
+						$done = TRUE;
+					}
+				}
+				 * 
+				 */
+				$this->_valueList .= $spacer . $value;
 				$count++;
 			}		
 		}

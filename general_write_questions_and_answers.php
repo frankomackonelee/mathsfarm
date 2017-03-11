@@ -37,6 +37,15 @@
 		$proceed = true;
 	}
 	if ($proceed) {
+		$query = new Query_Insert();
+		$what = array('title' => "'" . $using['title'] . "'", 'user' => "'all'");
+		$query->runQuery("question_title", $what);
+		if(!$query->_success){
+			$_SESSION['error'][] = $query->printErrorLog();
+			$proceed = false;
+		}
+	}
+	if ($proceed) {
 	
 		$this_page = new General_Page("Write Questions");	
 		//create the content for the core element of the page
@@ -56,9 +65,11 @@
 		$text .= "<form action='" . siteLocation . "/API_and_processing/general_write_questions_and_answers-process.php' method='POST'>";
 			$text .= "<table>";
 			$text .= "<tr><th>Question</th><th>Answer</th><th>Space for a button</th></tr>";
-			$text .= 	"<tr><td><input id='question0' class='question unlocked' type='text' name='question0'></td>
-						<td><input id='answer0' class='answer unlocked' type='text' name='answer0'></td>
-						<td><button>Click To Upload</button></td></td>";
+			$text .= 	"<tr><td><input id='question0' class='question unlocked' type='text' name='question0' value='locked question' readonly></td>
+						<td><input id='answer0' class='answer unlocked' type='text' name='answer0' value='locked answer' readonly></td></tr>";
+			$text .= 	"<tr><td><input id='question1' class='question unlocked' type='text' name='question1' value='write question here'></td>
+						<td><input id='answer1' class='answer unlocked' type='text' name='answer1' value='write answer here'></td>
+						<td><button>Click To Upload</button></td></tr>";
 			$text .= "</table>";
 		$text .= "</form>";
 		
