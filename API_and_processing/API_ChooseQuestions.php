@@ -26,7 +26,7 @@
 			$textForSql = new sqlTextMaker($selector,$topics,$subtopics,$levels,$titles) ;
 			$query = new Query_Select();
 			//This is to stop the query returning a ridiculous number of lines
-			$limit = ($selector=="titles" ? 3 : 29);
+			$limit = ($selector=="titles" ? 10 : 29);
 			$arrayResults = $query->runQuery($textForSql->from, $textForSql->what, $textForSql->where, $limit);
 			/*The next line adds elements like this to the JSON return message:
 			 *  "subtopics":	[

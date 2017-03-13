@@ -37,12 +37,38 @@
 		$proceed = true;
 	}
 	if ($proceed) {
-		$query = new Query_Insert();
-		$what = array('title' => "'" . $using['title'] . "'", 'user' => "'all'");
-		$query->runQuery("question_title", $what);
-		if(!$query->_success){
-			$_SESSION['error'][] = $query->printErrorLog();
+		$insertQuery = new Query_Insert();
+		$whatQT = array('title' => "'" . $using['title'] . "'", 'user' => "'all'");
+		$insertQuery->runQuery("question_title", $whatQT);
+		if(!$insertQuery->_success){
+			$_SESSION['error'][] = $insertQuery->printErrorLog();
 			$proceed = false;
+		}else{
+			$uniqueID = $insertQuery->getUniqueInsertId();
+			foreach ($using['level_list'] as $level) {
+				$whatL = array('question_id' => $uniqueID, 'level' =>$level);
+				$insertQuery->runQuery("question_difficulty", $whatL);
+			}
+			if(!$insertQuery->_success){
+				$_SESSION['error'][] = $insertQuery->printErrorLog();
+				$proceed = false;
+			}else{
+				$selectQuery = new Query_Select();
+				foreach ($using['subtopic_list'] as $subtopic) {
+					$what = array("subtopic_id");
+					$where = array ('subtopic' => "'" . $subtopic . "'");
+					$selectResult = $selectQuery->runQuery("subtopic_list", $what, $where, $limit=null);
+					if(count($selectResult)==1){
+						//$selectResult[0]['subtopic_id']
+						$whatST = array('question_id' => $uniqueID, 'subtopic_id' => $selectResult[0]['subtopic_id']);
+						$insertQuery->runQuery("question_subtopics", $whatST);					
+						if(!$insertQuery->_success){
+							$_SESSION['error'][] = $insertQuery->printErrorLog();
+							$proceed = false;
+						}
+					}
+				}
+			}	
 		}
 	}
 	if ($proceed) {
@@ -58,29 +84,25 @@
 				}
 				$text .= "<br>";
 			}else{
-				$text .= $requiredfield . ': ' . $using[$requiredfield];
+				$text .= $requiredfield . ': ' . $using[$requiredfield] . "<br>";
 			}
 		}		
-		$text .= "<h1>Add the questions and answers here:</h1>\n";		
-		$text .= "<form action='" . siteLocation . "/API_and_processing/general_write_questions_and_answers-process.php' method='POST'>";
-			$text .= "<table>";
+		$text .= "TODO: Need to now add questions with question_id=" . $uniqueID;
+		$text .= "<h1>Add the questions and answers for title</h1>";	
+		$text .= "<div id='title'>" . $using['title'] . "</div><br>";	
+		$text .= "<table id=loadedQuestionsAndAnswers>";
 			$text .= "<tr><th>Question</th><th>Answer</th><th>Space for a button</th></tr>";
-			$text .= 	"<tr><td><input id='question0' class='question unlocked' type='text' name='question0' value='locked question' readonly></td>
-						<td><input id='answer0' class='answer unlocked' type='text' name='answer0' value='locked answer' readonly></td></tr>";
-			$text .= 	"<tr><td><input id='question1' class='question unlocked' type='text' name='question1' value='write question here'></td>
-						<td><input id='answer1' class='answer unlocked' type='text' name='answer1' value='write answer here'></td>
-						<td><button>Click To Upload</button></td></tr>";
-			$text .= "</table>";
-		$text .= "</form>";
+			$text .= 	"<tr><td><input id='questionLoad' type='text' value='write question here'></td>
+						<td><input id='answerLoad' type='text' value='write answer here'></td>
+						<td><button id='uploadQuestionsAndAnswers'>Click To Upload</button></td></tr>";
+		$text .= "</table>";
 		
 		$this_page->setcontent("core",$text);
 		
 		$this_page->addJavascriptFile(siteLocation."javascript/common_functions.js");
-		//$this_page->addJavascriptFile(siteLocation."javascript/class_AJAXrequest.js");
-		//$this_page->addJavascriptFile(siteLocation."javascript/class_JSObjectForAPI.js");
-		//$this_page->addJavascriptFile(siteLocation."javascript/browser_event_control.js");
-		//$this_page->addJavascriptFile(siteLocation."javascript/general_write_questions.js");
-		//$this_page->addCssFile(siteLocation."css/general_write_questions.css");
+		$this_page->addJavascriptFile(siteLocation."javascript/class_AJAXrequest.js");
+		$this_page->addJavascriptFile(siteLocation."javascript/class_JSObjectForAPI.js");
+		$this_page->addJavascriptFile(siteLocation."javascript/general_write_questions_and_answers.js");
 		
 		$this_page->printPage();
 	}else{

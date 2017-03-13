@@ -21,7 +21,10 @@ AJAXrequest.prototype.makeRequest = function (myFunction) {
 		    // everything is good, the response is received
 		    if (httpRequest.status === 200) {
 		    	if(handle.responseType == "json"){
-		    		handle.response = JSON.parse(httpRequest.responseText);
+		    		//next two lines are a total fudge I can't understand why but a hyphen is popping upn in the AJAX return message from API
+		    		var jsonText = httpRequest.responseText;
+		    		var jsonText = (jsonText.substr(0, 1)=="-" ? jsonText.substr(1, jsonText.length) : jsonText);
+		    		handle.response = JSON.parse(jsonText);
 		    	}else{
 		    		handle.response = "Need to update teh AJAXresquest object to deal with non json responses";
 		    	}
