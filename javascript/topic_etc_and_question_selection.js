@@ -116,6 +116,7 @@ function sendRefreshThroughHere () {
 function init (){
 	
 	sendRefreshThroughHere();
+	
 	var selectors = document.getElementsByClassName('selector');
 	forEach(selectors, addOnChangeEvent);	
 	

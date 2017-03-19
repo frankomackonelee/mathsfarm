@@ -28,14 +28,25 @@
 			//This is to stop the query returning a ridiculous number of lines
 			$limit = ($selector=="titles" ? 10 : 29);
 			$arrayResults = $query->runQuery($textForSql->from, $textForSql->what, $textForSql->where, $limit);
-			/*The next line adds elements like this to the JSON return message:
+			/*The next lines adds elements like this to the JSON return message:
 			 *  "subtopics":	[
 			 * 						{"myList":"Decimals"},
 			 * 						{"myList":"Estimating and accuracy"},
 			 * 						{"myList":"Fractions"},
 			 * 					]
 			 */
-			$stringResponse .= $arraySpacer . '"' . $selector . '":' . json_encode($arrayResults);	
+			 //TODO: this check could be wrapped around all json_encodes
+			$endodedinJSON = json_encode($arrayResults);
+			//$endodedinJSON = json_encode(utf8_encode($arrayResults));
+			if($endodedinJSON == false){
+				if(count($arrayResults)>0){
+					$i = 0;
+					$endodedinJSON = json_encode($arrayResults[0]['question']);
+				}else{
+					$endodedinJSON = '"problem with the returned query not able to write as string. Check query return for special characters"';
+				}
+			}
+			$stringResponse .= $arraySpacer . '"' . $selector . '":' . $endodedinJSON;			
 			/*The next line adds the sql to the query
 			 *	"sql_for_subtopics" : "SELECT DISTINCT subtopic AS myList FROM subtopic_list WHERE topic='Algebra'" , 
 			 */			

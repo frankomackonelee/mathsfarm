@@ -19,6 +19,8 @@
 			    $this->$_success = FALSE;
 				$this->_errorLog[] = "Problem connecting to database";
 			}
+			// Change character set to utf8
+			mysqli_set_charset(self::$mysqli,"utf8");
 		}
 	
 		public function printQueryLog()

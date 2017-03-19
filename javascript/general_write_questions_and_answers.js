@@ -16,7 +16,7 @@ function gotData(thisAJAXRequest) {
 		for (var i=0; i < questionsAndAnswers.length; i++) {
 			number = questionsAndAnswers[i].question_number;
 			question = questionsAndAnswers[i].question;
-			answer = questionsAndAnswers[i].question;
+			answer = questionsAndAnswers[i].answer;
 			$text += "<tr><td><input id='question"+number+"' class='question' type='text' value='"+question+"' readonly></td>";
 			$text += "<td><input id='answer"+number+"' class='answer' type='text' value='"+answer+"' readonly></td></tr>";
 		};
