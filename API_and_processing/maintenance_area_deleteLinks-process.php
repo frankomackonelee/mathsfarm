@@ -3,10 +3,10 @@
 	if (empty($_POST)){
 		die(header("Location: ../maintenance_area_editLinks.php"));
 	}
-	
-	$whereArray['linkNumber'] = $_POST['linkNumber'];
-		
-	$query= new Query_Delete();
+
+	$query= new Query_Delete();	
+	$whereArray['linkNumber'] = $query->escapeMe($_POST['linkNumber']);
+
 	$query->runQuery("pageinfo_links" ,$whereArray);
 	if($query->getSuccess()){
 		unset($query);

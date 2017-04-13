@@ -2,7 +2,16 @@
 	include_once 'API_and_processing/include.inc';
 
 	$maintenance_area = new maintenancePage("Edit Links");
-	
+	$sourcesOfProblems = array('errors', 'missing');
+	foreach ($sourcesOfProblems as $source) {
+		if(isset($_SESSION[$source])){
+			print "<h1>" . $source . "</h1>";
+			foreach ($_SESSION[$source] as $key => $message) {
+				print "<p>" . $key . ": " . $message . "</p>";
+			}
+		}
+		unset($_SESSION[$source]);		
+	}
 	$text = '<h1>Three ways to edit links:</h1>';
 	$text .= '<div class="centered">';
 	$buttons = array(	'Add_Links' 	=> 'Add Links',

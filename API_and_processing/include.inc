@@ -14,4 +14,5 @@
 	require_once('class_Query_Select.php');
 	require_once('class_Query_Delete.php');
 	require_once('class_Query_Update.php');
+	require_once('class_Validator.php');
 ?>

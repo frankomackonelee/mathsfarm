@@ -9,11 +9,12 @@
 	$json = file_get_contents('php://input');
 	//the true below is inserted to help access this as an associative array.  Don't really understand how 
 	$json_post = json_decode($json,true);
-	$title = "'" . $json_post['title'] . "'";
-	$question = "'" . $json_post['question'] . "'";
-	$answer = "'" . $json_post['answer'] . "'";
-	
 	$selectQuery = new Query_Select();
+	
+	$title = "'" . $selectQuery->escapeMe($json_post['title']) . "'";
+	$question = "'" . $selectQuery->escapeMe($json_post['question']) . "'";
+	$answer = "'" . $selectQuery->escapeMe($json_post['answer']) . "'";
+	
 	$what1 = array('question_id');
 	$where1 = array ('title' => $title);
 	$selectResult1 = $selectQuery->runQuery('question_title', $what1, $where1);
