@@ -58,7 +58,12 @@ function addOnChangeEvent(selector){
 			document.cookie = changed + "=" + document.getElementById( changedSelector ).value;
 		};
 		var message = postToGetJSON(changed + "s");	
-    	var myUrl = "/learning/mathsfarm/version2/API_and_processing/API_ChooseQuestions.php"; 
+    	var myUrl = "/learning/mathsfarm/version2/API_and_processing/API_ChooseQuestions.php";
+    	//TODO: test for INJECTION Protection
+    	// change message via this JAVASCRIPT:
+    	//message = '{"seeking":["questions"],"topics":"Any","subtopics":"Any","levels":"Any","titles":"'+ "') OR TRUE OR qt.title IN ('" + '" }'
+    	//chosen questions should be 29 from the top of the list!
+    	//but not once mysql_real_escape_string() has been implemented
 		myAJAXRequest = new AJAXrequest(myUrl, message);
 		myAJAXRequest.makeRequest(gotData);
 	};

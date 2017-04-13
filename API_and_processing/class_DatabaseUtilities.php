@@ -51,6 +51,20 @@
 			return $this->_success;
 		}		
 		
+		public function escapeMe($stringOrArrayOfStrings)
+		{
+			$output;
+			if (is_array($stringOrArrayOfStrings)) {
+				$output = array();
+				foreach ($stringOrArrayOfStrings as $key => $str) {
+					$output[$key] = mysqli_real_escape_string(self::$mysqli, $str);
+				}
+			} else {
+				$output = mysqli_real_escape_string( self::$mysqli, $stringOrArrayOfStrings);
+			}
+			return $output;
+		}
+		
 		protected function makeLists($arr, $valueSpacer)
 		{
 			$this->_keyList = "";
@@ -93,6 +107,7 @@
 		
 		protected function queryDatabase($sql)
 		{
+			//$sql = mysqli_real_escape_string(self::$mysqli, $sql);
 			return self::$mysqli->query($sql);	
 		}
 	}

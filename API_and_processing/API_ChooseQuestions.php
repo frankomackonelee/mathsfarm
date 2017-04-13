@@ -7,12 +7,15 @@
 
 	$json = file_get_contents('php://input');
 	$json_post = json_decode($json);
+	$query = new Query_Select();
 
-	$requiredReturn = $json_post->seeking;	
-	$topics = arrayToString($json_post->topics);
-	$subtopics = $json_post->subtopics;
-	$levels = $json_post->levels;
-	$titles = $json_post->titles;
+	$requiredReturn = $query->escapeMe($json_post->seeking);	
+	//TODO: to be honest this could all do with a rewrite.  There are too many layers of complexity
+	//writing the queries which are totally unnecessary.
+	$topics = arrayToString($query->escapeMe($json_post->topics));
+	$subtopics = $query->escapeMe($json_post->subtopics);
+	$levels = $query->escapeMe($json_post->levels);
+	$titles = $query->escapeMe($json_post->titles);
 	
 	/* Next line lines add this sort of thing to JSON
 		"{ "selectors": ["subtopics","titles"] , 
@@ -24,7 +27,7 @@
 			
 			//Next 3 lines specify the sql then run the query outputted as an array
 			$textForSql = new sqlTextMaker($selector,$topics,$subtopics,$levels,$titles) ;
-			$query = new Query_Select();
+
 			//This is to stop the query returning a ridiculous number of lines
 			$limit = ($selector=="titles" ? 10 : 29);
 			$arrayResults = $query->runQuery($textForSql->from, $textForSql->what, $textForSql->where, $limit);
@@ -50,7 +53,7 @@
 			/*The next line adds the sql to the query
 			 *	"sql_for_subtopics" : "SELECT DISTINCT subtopic AS myList FROM subtopic_list WHERE topic='Algebra'" , 
 			 */			
-			$stringResponse .= ', "sql_for_' . $selector . '" : "' . $query->getSql() . '"';
+			$stringResponse .= ', "sql_for_' . $selector . '" :' . json_encode($query->getSql());
 
 			$arraySpacer = " , ";
 	}
