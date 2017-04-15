@@ -7,7 +7,7 @@
 		if(isset($_SESSION[$source])){
 			print "<h1>" . $source . "</h1>";
 			foreach ($_SESSION[$source] as $key => $message) {
-				print "<p>" . $key . ": " . $message . "</p>";
+				print "<p>" . $message . "</p>";
 			}
 		}
 		unset($_SESSION[$source]);		
