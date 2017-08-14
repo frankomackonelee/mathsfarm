@@ -5,7 +5,7 @@
 	
 	//create the content for the core element of the page
 	$text = "<h1>Welcome to the Maths Farm</h1>\n";
-	$text .= "<p>The mission of this website is to make it easy for maths teachers to present the right questions to their classes in fun engaging formats</p>\n";
+	$text .= "<p>The purpose of this website is to make it easy for maths teachers to present the right questions to their classes in fun engaging formats</p>\n";
 	$text .= "<p>Down on the farm you can do the following:
 				<ul>
 				<li>Turn a list of quesions and answers into a whole class activity at a click</li>
