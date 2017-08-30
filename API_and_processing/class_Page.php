@@ -118,7 +118,7 @@ class Page {
 	{
 		$class = 'bottomlink';
 		$links = array ( 	
-							array("general_home.php","Home"), 
+							array("index.php","Home"), 
 							array("general_about.php","About Us"), 
 							array("general_write_title.php","Write Questions"),
 							array("choose_questions.php","Choose Questions"),

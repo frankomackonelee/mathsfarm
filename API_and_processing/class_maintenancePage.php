@@ -149,7 +149,7 @@ class maintenancePage {
 	{
 		$class = 'bottomlink';
 		$links = array ( 	
-							array("general_home.php","Home"), 
+							array("index.php","Home"), 
 							array("maintenance_area.php","Maintenance Area"),
 						   	array("maintenance_area_checkCookies.php","Check Cookies"),
 						  	array("maintenance_area_choose_questions_AJAX_response.php","AJAX Response"),
